@@ -1,2 +1,1 @@
-# mustang-js
-A simple jQuery slider
+# Mustang.js - A cool simple slide plugin
