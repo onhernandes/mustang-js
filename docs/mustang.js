@@ -28,47 +28,45 @@ $(document).ready(function() {
 	Mustang(".slide", ".banner");
 });
 
-;( function($, file) {
+;(function($,) {
 	"use strict";
 
 		
-	var plugin = "Mustang",
-		settings = {
+	var plugin = "Mustang";
+
+	// The actual plugin constructor
+	function Plugin (element, options) {
+		this.element = element;
+		this.options = {
 			translate: 0,
 			time = 3000,
+			final = "",
 			counter = 0
 		};
 
-	// The actual plugin constructor
-	function Plugin ( element, options ) {
-		this.element = element;
-
-		// jQuery has an extend method which merges the contents of two or
-		// more objects, storing the result in the first object. The first object
-		// is generally empty as we don't want to alter the default options for
-		// future instances of the plugin
-		this.settings = $.extend( {}, defaults, options );
-		this._defaults = defaults;
-		this._name = plugin;
 		this.init();
 	}
 
 	// Avoid Plugin.prototype conflicts
 	$.extend( Plugin.prototype, {
 		init: function() {
-
-			// Place initialization logic here
-			// You already have access to the DOM element and
-			// the options via the instance, e.g. this.element
-			// and this.settings
-			// you can add more functions like the one below and
-			// call them like the example bellow
-			this.yourOtherFunction( "jQuery Boilerplate" );
+			$.extend(this.options, options);
+            
 		},
-		yourOtherFunction: function( text ) {
 
-			// some logic
-			$( this.element ).text( text );
+		move: function() {
+			this.options.translate += 100;
+			this.options.counter++;
+
+			if (this.options.counter < this.options.total) {
+				this.options.final = "translateX(-" + this.options.translate + "%)";
+			} else {
+				this.options.final = "translateX(0%)";
+				this.options.counter = 0;
+				this.options.translate = 0;
+			}
+
+			this.element.css("transform", this.options.final);
 		}
 	} );
 
