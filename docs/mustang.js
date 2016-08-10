@@ -51,7 +51,7 @@ $(document).ready(function() {
 	$.extend( Plugin.prototype, {
 		init: function() {
 			$.extend(this.options, options);
-            
+            setInterval(this.move, this.time);
 		},
 
 		move: function() {
