@@ -1,8 +1,8 @@
 /*
- *  Project: 
- *  Description: 
- *  Author: 
- *  License: 
+ *  Project: Mustang.js
+ *  Description: A cool plugin to create a simple slide based on flexbox
+ *  Author: @devmath
+ *  License: MIT
  */
 
 // the semi-colon before function invocation is a safety net against concatenated
@@ -19,9 +19,13 @@
     // minified (especially when both are regularly referenced in your plugin).
 
     // Create the defaults once
-    var pluginName = 'defaultPluginName',
+    var pluginName = 'mustang',
         defaults = {
-            propertyName: "value"
+            'time': 3000,
+            'translate': 0,
+            'counter': 0,
+            'final': '',
+            'limit': 7
         };
 
     // The actual plugin constructor
