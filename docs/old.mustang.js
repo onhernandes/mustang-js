@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	/*var Mustang = function(wrapper) {
+	var Mustang = function(wrapper) {
 		var wrapper = $(wrapper),
 			slide = $(".banner"),
 			total = slide.length,
@@ -31,7 +31,7 @@ $(document).ready(function() {
 		translate: 0,
 		time: 3000,
 		final: "3000",
-	});*/
+	});
 
 
 });
