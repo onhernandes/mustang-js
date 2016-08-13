@@ -14,9 +14,9 @@
 <body>
 
 <section class="intro" id="intro">
-    <article class="banner"></article>
-    <article class="banner"></article>
-    <article class="banner"></article>
+    <article class="teste"></article>
+    <article class="teste"></article>
+    <article class="teste"></article>
 </section>
 
 <!-- Scripts -->
@@ -24,7 +24,9 @@
 <script src="docs/mustang.js"></script>
 <script>
     $(function() {
-        $(".intro").mustang();
+        $(".intro").mustang({
+            item: '.teste'
+        });
     });
 </script>
 <!-- /Scripts -->

@@ -12,45 +12,50 @@
 	var pluginName = 'mustang',
 		defaults = {
 			item: '.banner',
-			time: 3000
-        };
-
-	function Mustang(element, options) {
-		this.element = element;
-		this.options = $.extend({}, defaults, options);
-		
-		this.wheel = {
+			time: 100
+        },
+        wheel = {
         	counter: 0,
         	translate: 0,
         	result: ''
         };
 
-        this.total = $(this.options.item).length;
+	function Plugin(element, options) {
+        this.element = element;
+		this.options = $.extend(defaults, options);
 
-        this._defaults = defaults;
-		this._name = pluginName;
+		this.total = $(this.options.item).length;
+		this.childs = this.options.item;
 
-		//this.init();		
-		setTimeout(this.move, this.options.time);
+		//this.init();
+		setInterval(this.move(), this.options.time);
+		//setTimeout(this.move, this.options.time);
 	}
 
-	Mustang.prototype.init = function() {
-		setTimeout(this.move, this.options.time);
+	Plugin.prototype.init = function() {
+		//var trye = this.move();
+		setInterval(this.move(), this.options.time);
+		//setInterval(this.move, this.options.time);
 	};
 
-	Mustang.prototype.move = function() {
-		this.wheel.translate += 100;
-		this.wheel.counter++;
+	Plugin.prototype.move = function() {
+		wheel.translate += 100;
+		wheel.counter++;
 
-		if (this.wheel.counter < this.total) {
-			this.result = "translateX(-" + this.wheel.translate + "%)";
+		if (wheel.counter < this.total) {
+			wheel.result = "translateX(-" + wheel.translate + "%)";
 		} else {
-			this.result = "translateX(0%)";
-			this.wheel.counter = 0;
-			this.wheel.translate = 0;
+			wheel.result = "translateX(0%)";
+			wheel.counter = 0;
+			wheel.translate = 0;
 		}
 
-		$(this.options.banner).css("transform", this.wheel.result);
+		console.log(wheel.counter);
+		console.log(wheel.translate);
+		console.log(this.total);
+		console.log(wheel.result);
+		
+		$(this.childs).css("transform", wheel.result);
 	};
 
 	$.fn[pluginName] = function (options) {
@@ -58,13 +63,13 @@
 		if (options === undefined || typeof options === 'object') {
 			return this.each(function () {
 				if (!$.data(this, 'plugin_' + pluginName)) {
-					$.data(this, 'plugin_' + pluginName, new Mustang(this, options));
+					$.data(this, 'plugin_' + pluginName, new Plugin(this, options));
 				}
 			});
 		} else if (typeof options === 'string' && options[0] !== '_' && options !== 'init') {
 			return this.each(function () {
 				var instance = $.data(this, 'plugin_' + pluginName);
-				if (instance instanceof Mustang && typeof instance[options] === 'function') {
+				if (instance instanceof Plugin && typeof instance[options] === 'function') {
 					instance[options].apply(instance, Array.prototype.slice.call(args, 1));
 				}
 				if (options === 'destroy') {
