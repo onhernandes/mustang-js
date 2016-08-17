@@ -59,6 +59,17 @@
 		$(that.options.item).css("transform", that.wheel.result);
 	};
 
+	Plugin.prototype.button = function() {
+		var next = that.buttons.selector.next;
+		var prev = that.buttons.selector.prev;
+
+		$(next).click(that.move());
+		$(prev).click(function() {
+			that.wheel.translate += 100;
+			$(that.options.item).css("transform", that.wheel.result);
+		});
+	};
+
 	$.fn[pluginName] = function (options) {
 		var args = arguments;
 		if (options === undefined || typeof options === 'object') {
