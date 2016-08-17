@@ -15,7 +15,7 @@
 			time: 2000
         };
 
-	var Saver = undefined;
+	var that = undefined;
 	
 	function Plugin(element, options) {
 		this.element = element;
@@ -32,27 +32,27 @@
         this._defaults = defaults;
 		this._name = pluginName;
 		
-		Saver = this;
+		that = this;
 		this.init();
 	}
 
 	Plugin.prototype.init = function() {
-		setInterval(Saver.move, Saver.options.time);
+		setInterval(that.move, that.options.time);
 	};
 
 	Plugin.prototype.move = function() {
-		Saver.wheel.translate += 100;
-		Saver.wheel.counter++;
+		that.wheel.translate += 100;
+		that.wheel.counter++;
 
-		if (Saver.wheel.counter < Saver.total) {
-			Saver.wheel.result = "translateX(-" + Saver.wheel.translate + "%)";
+		if (that.wheel.counter < that.total) {
+			that.wheel.result = "translateX(-" + that.wheel.translate + "%)";
 		} else {
-			Saver.wheel.result = "translateX(0%)";
-			Saver.wheel.counter = 0;
-			Saver.wheel.translate = 0;
+			that.wheel.result = "translateX(0%)";
+			that.wheel.counter = 0;
+			that.wheel.translate = 0;
 		}
 
-		$(Saver.options.item).css("transform", Saver.wheel.result);
+		$(that.options.item).css("transform", that.wheel.result);
 	};
 
 	$.fn[pluginName] = function (options) {
