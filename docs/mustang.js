@@ -12,7 +12,11 @@
 	var pluginName = 'mustang',
 		defaults = {
 			item: '.banner',
-			time: 2000
+			time: 2000,
+			buttons: false,
+			paginate: false,
+			pauseOnHover: false,
+			progressBar: false
         };
 
 	var that = undefined;
