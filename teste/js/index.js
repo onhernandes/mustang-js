@@ -12,12 +12,12 @@
 	var pluginName = 'mustang',
 		defaults = {
 			item: '.banner',
-			time: 2000
+			time: 3000
         };
-
-	var Saver = undefined;
 	
-	function Plugin(element, options) {
+	var Omustang = undefined;
+	
+	function Mustang(element, options) {
 		this.element = element;
 		this.options = $.extend({}, defaults, options);
 		
@@ -32,27 +32,34 @@
         this._defaults = defaults;
 		this._name = pluginName;
 		
-		Saver = this;
-		this.init();
+		Omustang = this;
+		this.init();		
+		
+		//setTimeout(Omustang.move, Omustang.options.time);
 	}
 
-	Plugin.prototype.init = function() {
-		setInterval(Saver.move, Saver.options.time);
+	Mustang.prototype.init = function() {
+		setTimeout(Omustang.move, Omustang.options.time);
 	};
 
-	Plugin.prototype.move = function() {
-		Saver.wheel.translate += 100;
-		Saver.wheel.counter++;
+	Mustang.prototype.move = function() {
+		o = this;
+		if(typeof(this.element) == 'undefined' && typeof(Omustang) != 'undefined'){
+			o = Omustang;	
+		}
+		o.wheel.translate += 100;
+		o.wheel.counter++;
 
-		if (Saver.wheel.counter < Saver.total) {
-			Saver.wheel.result = "translateX(-" + Saver.wheel.translate + "%)";
+		if (o.wheel.counter < o.total) {
+			o.result = "translateX(-" + o.wheel.translate + "%)";
 		} else {
-			Saver.wheel.result = "translateX(0%)";
-			Saver.wheel.counter = 0;
-			Saver.wheel.translate = 0;
+			o.result = "translateX(0%)";
+			o.wheel.counter = 0;
+			o.wheel.translate = 0;
 		}
 
-		$(Saver.options.item).css("transform", Saver.wheel.result);
+		$(o.options.banner).css("transform", o.wheel.result);
+		console.log('Move Ok');
 	};
 
 	$.fn[pluginName] = function (options) {
@@ -60,13 +67,13 @@
 		if (options === undefined || typeof options === 'object') {
 			return this.each(function () {
 				if (!$.data(this, 'plugin_' + pluginName)) {
-					$.data(this, 'plugin_' + pluginName, new Plugin(this, options));
+					$.data(this, 'plugin_' + pluginName, new Mustang(this, options));
 				}
 			});
 		} else if (typeof options === 'string' && options[0] !== '_' && options !== 'init') {
 			return this.each(function () {
 				var instance = $.data(this, 'plugin_' + pluginName);
-				if (instance instanceof Plugin && typeof instance[options] === 'function') {
+				if (instance instanceof Mustang && typeof instance[options] === 'function') {
 					instance[options].apply(instance, Array.prototype.slice.call(args, 1));
 				}
 				if (options === 'destroy') {
