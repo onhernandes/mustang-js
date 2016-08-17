@@ -13,7 +13,7 @@
 		defaults = {
 			item: '.banner',
 			time: 2000,
-			buttons: false,
+			buttonData: false,
 			paginate: false,
 			pauseOnHover: false,
 			progressBar: false
@@ -22,6 +22,7 @@
 	var that = undefined;
 	
 	function Plugin(element, options) {
+		that = this;
 		this.element = element;
 		this.options = $.extend({}, defaults, options);
 		
@@ -30,13 +31,15 @@
         	translate: 0,
         	result: ''
         };
+
+        if (this.options.buttonData !== false) {
+        }
 		
         this.total = $(this.options.item).length;
 
         this._defaults = defaults;
 		this._name = pluginName;
 		
-		that = this;
 		this.init();
 	}
 
@@ -60,8 +63,8 @@
 	};
 
 	Plugin.prototype.button = function() {
-		var next = that.buttons.selector.next;
-		var prev = that.buttons.selector.prev;
+		var next = that.buttonData.selector.next;
+		var prev = that.buttonData.selector.prev;
 
 		$(next).click(that.move());
 		$(prev).click(function() {
