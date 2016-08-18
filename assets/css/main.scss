@@ -1,5 +1,7 @@
 @import 'reset.scss';
 
+$yellow: #FBB600;
+
 .intro {
 	width: 100%;
 	height: 100vh;
@@ -12,10 +14,55 @@
 		height: 100%;
 		transform: translateX(0);
 		transition: transform .7s ease .4s;
-		background-color: #1056ad;
+		background-color: $yellow;
 
 		&:nth-child(2) {
-			background-color: #990000;
+			background-color: darken($yellow, 2%);
 		} 
+
+		&:nth-child(3) {
+			background-color: darken($yellow, 4%);
+		} 
+
+		&:nth-child(4) {
+			background-color: darken($yellow, 6%);
+		} 
+	}
+
+	.banner {
+		z-index: 10;
+		display: flex;
+		flex-flow: wrap row;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+
+		h1 {
+			flex: 0 0 auto;
+			font-weight: 300;
+			color: #fff;
+			font-size: 50px;
+		}
+	}
+} 
+
+.button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: transparent;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+	flex-flow: wrap row;
+	z-index: 999;
+
+	a {
+		font-size: 60px;
+		color: #fff;
+		margin: 0 25px;
 	}
 }

@@ -14,9 +14,26 @@
 <body>
 
 <section class="intro" id="intro">
-    <article class="teste"></article>
-    <article class="teste"></article>
-    <article class="teste"></article>
+    <article class="banner">
+        <h1>Simple slide plugin</h1>
+    </article>
+
+    <article class="banner">
+        <h1>you've never seen before</h1>
+    </article>
+
+    <article class="banner">
+        <h1>because, it is unique.</h1>
+    </article>
+
+    <article class="banner">
+        <h1>Very simple, easy and clean.</h1>
+    </article>
+</section>
+
+<section class="button">
+    <a href="javascript:void(0);" class="prev"><</a>
+    <a href="javascript:void(0);" class="next">></a>
 </section>
 
 <!-- Scripts -->
@@ -25,7 +42,8 @@
 <script>
     $(function() {
         $(".intro").mustang({
-            item: '.teste'
+            item: '.banner',
+            time: 4000
         });
     });
 </script>
