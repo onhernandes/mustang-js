@@ -17,12 +17,15 @@
 			paginate: false,
 			pauseOnHover: false,
 			progressBar: false
-        };
+        },
+        buttonData = {
+			next: '#next',
+			prev: '#prev'
+		};
 
 	var that = undefined;
 	
 	function Plugin(element, options) {
-		that = this;
 		this.element = element;
 		this.options = $.extend({}, defaults, options);
 		
@@ -31,20 +34,23 @@
         	translate: 0,
         	result: ''
         };
-
-        if (this.options.buttonData !== false) {
-        }
 		
         this.total = $(this.options.item).length;
 
         this._defaults = defaults;
 		this._name = pluginName;
 		
+		that = this;
+		
 		this.init();
 	}
 
 	Plugin.prototype.init = function() {
 		setInterval(that.move, that.options.time);
+
+		if (buttonData.active) {
+			that.button();
+		}
 	};
 
 	Plugin.prototype.move = function() {
@@ -63,12 +69,20 @@
 	};
 
 	Plugin.prototype.button = function() {
-		var next = that.buttonData.selector.next;
-		var prev = that.buttonData.selector.prev;
+		$(buttonData.next).click(that.move());
+		
+		$(buttonData.prev).click(function() {
+			that.wheel.translate -= 100;
+			that.wheel.counter--;
 
-		$(next).click(that.move());
-		$(prev).click(function() {
-			that.wheel.translate += 100;
+			if (that.wheel.counter > that.total) {
+				that.wheel.result = "translateX(" + that.wheel.translate + "%)";
+			} else {
+				that.wheel.result = "translateX(0%)";
+				that.wheel.counter = 0;
+				that.wheel.translate = 0;
+			}
+
 			$(that.options.item).css("transform", that.wheel.result);
 		});
 	};

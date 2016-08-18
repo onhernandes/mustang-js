@@ -32,8 +32,8 @@
 </section>
 
 <section class="button">
-    <a href="javascript:void(0);" class="prev"><</a>
-    <a href="javascript:void(0);" class="next">></a>
+    <a href="javascript:void(0);" class="prev" id="prev"><</a>
+    <a href="javascript:void(0);" class="next" id="next">></a>
 </section>
 
 <!-- Scripts -->
@@ -43,7 +43,10 @@
     $(function() {
         $(".intro").mustang({
             item: '.banner',
-            time: 4000
+            time: 4000,
+            buttonData: {
+                active: true
+            }
         });
     });
 </script>
