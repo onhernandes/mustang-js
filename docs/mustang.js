@@ -12,16 +12,14 @@
 	var pluginName = 'mustang',
 		defaults = {
 			item: '.banner',
-			time: 2000,
-			buttonData: false,
+			time: 5000,
+			buttonActive: false,
+			next: '#next',
+			prev: '#prev',
 			paginate: false,
 			pauseOnHover: false,
 			progressBar: false
-        },
-        buttonData = {
-			next: '#next',
-			prev: '#prev'
-		};
+        };
 
 	var that = undefined;
 	
@@ -48,7 +46,7 @@
 	Plugin.prototype.init = function() {
 		setInterval(that.move, that.options.time);
 
-		if (buttonData.active) {
+		if (that.options.buttonActive) {
 			that.button();
 		}
 	};
@@ -69,18 +67,32 @@
 	};
 
 	Plugin.prototype.button = function() {
-		$(buttonData.next).click(that.move());
-		
-		$(buttonData.prev).click(function() {
-			that.wheel.translate -= 100;
-			that.wheel.counter--;
+		$(that.options.next).click(function() {
+			that.wheel.translate += 100;
+			that.wheel.counter++;
 
-			if (that.wheel.counter > that.total) {
-				that.wheel.result = "translateX(" + that.wheel.translate + "%)";
+			if (that.wheel.counter <= that.total) {
+				that.wheel.result = "translateX(-" + that.wheel.translate + "%)";
 			} else {
 				that.wheel.result = "translateX(0%)";
 				that.wheel.counter = 0;
 				that.wheel.translate = 0;
+			}
+
+			$(that.options.item).css("transform", that.wheel.result);
+		});
+
+
+		$(that.options.prev).click(function() {
+
+			if (that.wheel.counter = 0) {
+				that.wheel.result = "translateX(0%)";
+				that.wheel.counter = 0;
+				that.wheel.translate = 0;
+			} else if (that.wheel.counter <= that.total) {
+				that.wheel.translate -= 100;
+				that.wheel.counter--;
+				that.wheel.result = "translateX(-" + that.wheel.translate + "%)";
 			}
 
 			$(that.options.item).css("transform", that.wheel.result);
