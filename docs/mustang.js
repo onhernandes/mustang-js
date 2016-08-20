@@ -44,7 +44,7 @@
 	}
 
 	Plugin.prototype.init = function() {
-		//setInterval(that.move, that.options.time);
+		setInterval(that.move, that.options.time);
 
 		if (that.options.buttonActive) {
 			that.button();

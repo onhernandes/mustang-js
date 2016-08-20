@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
     <meta name="theme-color" content="#ffffff" />
-
     <title>Mustang.js</title>
-
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -16,34 +14,39 @@
 <section class="intro" id="intro">
     <article class="banner">
         <h1>Simple slide plugin</h1>
+
+        <a class="github-button" href="https://github.com/devmath/mustang-js" data-icon="octicon-star" data-style="mega" data-count-href="/devmath/mustang-js/stargazers" data-count-api="/repos/devmath/mustang-js#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star devmath/mustang-js on GitHub">Star</a>
     </article>
 
     <article class="banner">
-        <h1>you've never seen before</h1>
+        <h1>CSS3 + a bit of jQuery</h1>
     </article>
 
     <article class="banner">
-        <h1>because, it is unique.</h1>
+        <h1>You just need add mustang.js</h1>
     </article>
 
     <article class="banner">
-        <h1>Very simple, easy and clean.</h1>
+        <h1>and type out.</h1>
+    </article>
+
+    <article class="banner">
+        <h1><a href="https://github.com/devmath/mustang-js">See more here.</a></h1>
     </article>
 </section>
 
-<section class="button">
-    <a href="javascript:void(0);" class="prev" id="prev"><</a>
-    <a href="javascript:void(0);" class="next" id="next">></a>
-</section>
+<a href="javascript:void(0);" id="prev"><</a>
+<a href="javascript:void(0);" id="next">></a>
 
 <!-- Scripts -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 <script src="assets/js/jquery-3.0.0.min.js"></script>
 <script src="docs/mustang.js"></script>
 <script>
     $(function() {
         $(".intro").mustang({
             item: '.banner',
-            time: 15000,
+            time: 2500,
             buttonActive: true,
             next: "#next",
             prev: "#prev"
