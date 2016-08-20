@@ -13,7 +13,7 @@ Create your HTML tags, like:
 	</section>
 ```
 
-Set those properties for the container
+Set those properties for the container for do the plugin works.
 
 ```css
 	display: flex;
@@ -21,7 +21,7 @@ Set those properties for the container
 	overflow: hidden;
 ```
 
-for do the plugin works. If you want that the items fit all the user view, set
+If you want that the items fit all the user view, set
 
 ```css
 	width: 100%;

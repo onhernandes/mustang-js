@@ -11,8 +11,8 @@
 
 	var pluginName = 'mustang',
 		defaults = {
-			item: '.banner',
-			time: 5000,
+			item: '.item',
+			time: 2500,
 			buttonActive: false,
 			next: '#next',
 			prev: '#prev'
