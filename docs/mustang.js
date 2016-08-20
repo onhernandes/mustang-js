@@ -44,7 +44,7 @@
 	}
 
 	Plugin.prototype.init = function() {
-		setInterval(that.move, that.options.time);
+		//setInterval(that.move, that.options.time);
 
 		if (that.options.buttonActive) {
 			that.button();
@@ -52,8 +52,8 @@
 	};
 
 	Plugin.prototype.move = function() {
-		that.wheel.translate += 100;
-		that.wheel.counter++;
+			that.wheel.translate += 100;
+			that.wheel.counter++;
 
 		if (that.wheel.counter < that.total) {
 			that.wheel.result = "translateX(-" + that.wheel.translate + "%)";
@@ -71,7 +71,7 @@
 			that.wheel.translate += 100;
 			that.wheel.counter++;
 
-			if (that.wheel.counter <= that.total) {
+			if (that.wheel.counter < that.total) {
 				that.wheel.result = "translateX(-" + that.wheel.translate + "%)";
 			} else {
 				that.wheel.result = "translateX(0%)";
@@ -80,22 +80,21 @@
 			}
 
 			$(that.options.item).css("transform", that.wheel.result);
+			console.log(that.wheel.counter);
+			console.log(that.wheel.translate);
+			console.log(that.wheel.result);
 		});
 
 
 		$(that.options.prev).click(function() {
-
-			if (that.wheel.counter = 0) {
-				that.wheel.result = "translateX(0%)";
-				that.wheel.counter = 0;
-				that.wheel.translate = 0;
-			} else if (that.wheel.counter <= that.total) {
-				that.wheel.translate -= 100;
+			if (that.wheel.counter < that.total && that.wheel.counter !== 0) {
 				that.wheel.counter--;
+				that.wheel.translate -= 100;
 				that.wheel.result = "translateX(-" + that.wheel.translate + "%)";
+				$(that.options.item).css("transform", that.wheel.result);
+			} else {
+				return false;
 			}
-
-			$(that.options.item).css("transform", that.wheel.result);
 		});
 	};
 
