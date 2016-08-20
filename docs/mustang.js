@@ -15,10 +15,7 @@
 			time: 5000,
 			buttonActive: false,
 			next: '#next',
-			prev: '#prev',
-			paginate: false,
-			pauseOnHover: false,
-			progressBar: false
+			prev: '#prev'
         };
 
 	var that = undefined;
