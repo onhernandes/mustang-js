@@ -13,7 +13,7 @@ Create your HTML tags, like:
 	</section>
 ```
 
-Set those properties for the container for do the plugin works.
+Set those properties to the container for do the plugin works.
 
 ```css
 	display: flex;
