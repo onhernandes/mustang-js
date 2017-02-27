@@ -1,5 +1,18 @@
+// return the merge of two objects
 function merge(obj1, obj2) {
-	// @TODO create merge function and return the merge of two objects
+	var obj3 = {};
+
+    for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+
+    for (var atrname in obj2) {
+    	// if obj1 do not has the same property he won't merge
+
+    	if (obj1[atrname]) {
+    		obj3[atrname] = obj2[atrname];
+    	}
+    }
+
+    return obj3;
 }
 
 function Mustang(el, opt) {
@@ -13,17 +26,27 @@ function wheel(el, opt) {
 
 wheel.prototype.init = function(el, opt) {
 	this.setOptions(opt);
+	
+	if (document.querySelectorAll(this.defaults.item).length < 1) {
+		console.log('Your slide must has more than one item');
+		console.log('Please, add more items and try again');
+		return false;
+	}
+
 	this.start();
 };
 
 wheel.prototype.setOptions = function(opt) {
-	// @TODO check if have more than 1 item
-	
-	this.defaults = {
-		// @TODO add defaults
+	var defs = {
+		item: '.item', // slide item selector
+		time: 2500, // time to wait for next slide
+		effect: 'slide', // what effect, slide or fade
+		css3: true // whether use css3 or not
 	};
 
-	return merge(defaults, opt);
+	this.defaults = merge(defs, opt);
+
+	return true;
 };
 
 wheel.prototype.start = function() {
