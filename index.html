@@ -7,35 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
     <meta name="theme-color" content="#ffffff" />
     <title>Mustang.js</title>
+    <link rel="stylesheet" href="assets/main.css">
 </head>
 <body>
 
 <section class="intro" id="intro">
     <article class="banner">
-        <h1>Simple slide plugin</h1>
+        <h1>1 Simple slide plugin</h1>
     </article>
 
     <article class="banner">
-        <h1>CSS3 + a bit of jQuery</h1>
+        <h1>2 CSS3 + a bit of jQuery</h1>
     </article>
 
     <article class="banner">
-        <h1>You just need add mustang.js</h1>
+        <h1>3 You just need add mustang.js</h1>
     </article>
 
     <article class="banner">
-        <h1>and type out.</h1>
+        <h1>4 and type out.</h1>
     </article>
 
     <article class="banner">
-        <h1><a href="https://github.com/devmath/mustang-js">See more here.</a></h1>
+        <h1>5 See more here</h1>
     </article>
 </section>
+
+<a class="prev" href="javascript:void(0);">prev</a>
+<a class="next" href="javascript:void(0);">next</a>
 
 <script src="dist/mustang.js"></script>
 <script>
     Mustang('.intro', {
-        item: '.banner'
+        item: '.banner',
+        time: 3000,
+        height: 150,
+        next: '.next',
+        prev: '.prev'
     });
 </script>
 </body>
