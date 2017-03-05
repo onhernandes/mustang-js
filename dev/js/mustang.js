@@ -49,8 +49,6 @@ wheel.prototype.setOptions = function(opt) {
 	var defs = {
 		item: '.item', // slide item selector
 		time: 2500, // time to wait for next slide
-		effect: 'slide', // what effect, slide or fade
-		css3: true,	// whether use css3 or not
 		height: 300, // parent height in px
 		transition: '0.1s linear 0.01s' // css3 transition for slide items
 	};
@@ -61,41 +59,50 @@ wheel.prototype.setOptions = function(opt) {
 };
 
 wheel.prototype.start = function() {
-	// @TODO check which effect runs
-	// @TODO call right effect method
+	this.slide();
 };
 
 wheel.prototype.slide = function() {
 	var parent = document.querySelector(this.element),
 		child = parent.querySelectorAll(this.defaults.item);
 
-	this.setBasicSlide(parent, child, this.defaults.css3);
+	this.setBasicSlide(parent, child);
+	this.interval = setInterval(this.moveSlide(child), this.
+		defaults.time);
 };
 
-wheel.prototype.setBasicSlide = function(parent, child, css3) {
-	if (css3) {
-		parent.style.position = 'relative';
-		parent.style.display = 'flex';
-		parent.style.flexFlow = 'wrap row';
-		parent.style.overflow = 'hidden';
-		parent.style.height = this.defaults.height + 'px';
+wheel.prototype.setBasicSlide = function(parent, child) {
+	parent.style.position = 'relative';
+	parent.style.display = 'flex';
+	parent.style.flexFlow = 'wrap row';
+	parent.style.overflow = 'hidden';
+	parent.style.height = this.defaults.height + 'px';
 
-		for (var i = 0; i < child.length; i++) {
-			child[i].style.flex = '0 0 100%';
-			child[i].style.height = '100%';
-			child[i].style.boxSizing = 'border-box';
-			child[i].style.transition = 'transform ' + this.defaults.transform;
-		}
-	} else {
-		// @TODO set commom css
+	for (var i = 0; i < child.length; i++) {
+		child[i].style.flex = '0 0 100%';
+		child[i].style.height = '100%';
+		child[i].style.boxSizing = 'border-box';
+		child[i].style.transition = 'margin ' + this.defaults.transform;
 	}
+
 	return true;
 };
 
-wheel.prototype.moveSlide = function() {
-	// @TODO move slide function to be used inside of setInterval()	
-};
+wheel.prototype.moveSlide = function(child) {
+	if (this.logic.counter >= child.length) {
+		this.logic.counter = 0;
+		this.logic.translate = 0;
 
-wheel.prototype.fade = function() {
-	// @TODO create fade effect
+		for (var i = 0; i < child.length; i++) {
+			child[i].style.marginLeft = '0';
+		}
+		return true;
+	}
+
+	this.logic.counter++;
+	this.logic.translate += 100;
+	
+	for (var i = 0; i < child.length; i++) {
+		child[i].style.marginLeft = '-' + this.logic.translate + '%';
+	}
 };
