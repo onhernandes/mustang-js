@@ -24,12 +24,17 @@ gulp.task('build', function() {
 });
 
 gulp.task('js', function() {
-    return gulp.src(js_files)
+    gulp.src(js_files)
       .pipe(plumber())
-      .pipe(concat('mustang.js'))
+      .pipe(concat('mustang.min.js'))
       .pipe(uglify())
       .pipe(gulp.dest(dist))
       .pipe(browser.reload({stream: true}));
+
+    gulp.src(js_files)
+      .pipe(plumber())
+      .pipe(rename('mustang.js'))
+      .pipe(gulp.dest(dist));
 });
 
 gulp.task('reload', function() {
@@ -45,7 +50,8 @@ gulp.task('styles', function() {
 });
 
 function runner() {
-	gulp.watch(js_files, ['js']);
+  gulp.watch(js_files, ['js']);
+	gulp.watch(scss_files, ['styles']);
 	gulp.watch(html_files, ['reload']);
 }
 

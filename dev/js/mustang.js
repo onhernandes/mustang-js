@@ -1,4 +1,4 @@
-// return the merge of two objects
+// Return the merge of two objects
 function merge(obj1, obj2) {
 	var obj3 = {};
 
@@ -8,12 +8,15 @@ function merge(obj1, obj2) {
     return obj3;
 }
 
+// Mustang instantiates wheel object
 function Mustang(el, opt) {
 	return new wheel(el, opt);
 }
 
+// Fix for wheel object
 var that = "";
 
+// wheel object
 function wheel(el, opt) {
 	this.defaults = {};
 	this.element = el;
@@ -26,6 +29,7 @@ function wheel(el, opt) {
 	that = this;
 }
 
+// Init function, verify item/parent and starts
 wheel.prototype.init = function(el, opt) {
 	this.setOptions(opt);
 	
@@ -43,10 +47,11 @@ wheel.prototype.init = function(el, opt) {
 	this.start();
 };
 
+// Set default options
 wheel.prototype.setOptions = function(opt) {
 	var defs = {
 		item: '.item', // slide item selector
-		time: 1500, // time to wait for next slide
+		time: 2500, // time to wait for next slide
 		height: 300, // parent height in px
 		transition: '1s ease 0.1s', // css3 transition for slide items
 		next: false,
@@ -58,6 +63,9 @@ wheel.prototype.setOptions = function(opt) {
 	return true;
 };
 
+// Set basic slide CSS attributes for parent/child
+// Set setInterval()
+// Set next/prev buttons if enabled
 wheel.prototype.start = function() {
 	var parent = document.querySelector(this.element),
 		child = parent.querySelectorAll(this.defaults.item);
@@ -75,6 +83,7 @@ wheel.prototype.start = function() {
 	}
 };
 
+// Basic CSS attributes
 wheel.prototype.setBasicSlide = function(parent, child) {
 	parent.style.position = 'relative';
 	parent.style.display = 'flex';
@@ -93,6 +102,7 @@ wheel.prototype.setBasicSlide = function(parent, child) {
 	return true;
 };
 
+// Move slide to the next/prev
 wheel.prototype.moveSlide = function() {
 	var child = document.querySelectorAll(that.defaults.item);
 	that.logic.counter++;
@@ -117,6 +127,7 @@ wheel.prototype.moveSlide = function() {
 	}
 };
 
+// Go to the next item
 wheel.prototype.buttonNext = function() {
 	if (that.logic.counter == document.querySelectorAll(that.defaults.item).length) { return true; }
 	that.moveSlide();
@@ -125,6 +136,7 @@ wheel.prototype.buttonNext = function() {
 		defaults.time);
 };
 
+// Go to the previous item
 wheel.prototype.buttonPrev = function() {
 	if (that.logic.counter == 0) { return true; }
 	that.logic.counter -= 2; 
