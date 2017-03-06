@@ -1,6 +1,6 @@
 # Mustang.js - Simple slide plugin - [DEMO](https://mhernandes.github.io/mustang-js)
 
-Simple slide plugin with CSS3 + a bit of pure JS(yes, without jQuery!)
+Simple slide plugin with CSS3 + a bit of pure JS(yes, without jQuery! and 2.4kb minified!)
 
 ## How to use
 
