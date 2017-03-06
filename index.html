@@ -7,52 +7,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
     <meta name="theme-color" content="#ffffff" />
     <title>Mustang.js</title>
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/main.css">
 </head>
 <body>
 
 <section class="intro" id="intro">
     <article class="banner">
-        <h1>Simple slide plugin</h1>
-
-        <a class="github-button" href="https://github.com/devmath/mustang-js" data-icon="octicon-star" data-style="mega" data-count-href="/devmath/mustang-js/stargazers" data-count-api="/repos/devmath/mustang-js#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star devmath/mustang-js on GitHub">Star</a>
+        <h1>Demo</h1>
     </article>
 
     <article class="banner">
-        <h1>CSS3 + a bit of jQuery</h1>
+        <h1>This is how it works</h1>
     </article>
 
     <article class="banner">
-        <h1>You just need add mustang.js</h1>
+        <h1>You set the transition with CSS3</h1>
     </article>
 
     <article class="banner">
-        <h1>and type out.</h1>
+        <h1>Previous and Next button</h1>
     </article>
 
     <article class="banner">
-        <h1><a href="https://github.com/devmath/mustang-js">See more here.</a></h1>
+        <h1>Horizontal slide</h1>
     </article>
 </section>
 
-<a href="javascript:void(0);" id="prev"><</a>
-<a href="javascript:void(0);" id="next">></a>
+<a class="prev" href="javascript:void(0);">prev</a>
+<a class="next" href="javascript:void(0);">next</a>
 
-<!-- Scripts -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<script src="assets/js/jquery-3.0.0.min.js"></script>
-<script src="docs/mustang.js"></script>
+<script src="dist/mustang.js"></script>
 <script>
-    $(function() {
-        $(".intro").mustang({
-            item: '.banner',
-            time: 3500,
-            buttonActive: true,
-            next: "#next",
-            prev: "#prev"
-        });
+    Mustang('.intro', {
+        item: '.banner',
+        time: 3000,
+        height: 150,
+        next: '.next',
+        prev: '.prev'
     });
 </script>
-<!-- /Scripts -->
 </body>
 </html>

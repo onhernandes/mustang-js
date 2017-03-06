@@ -1,82 +1,57 @@
-# Mustang.js - Simple slide plugin
+# Mustang.js - Simple slide plugin - [DEMO](https://mhernandes.github.io/mustang-js)
 
-Simple slide plugin with CSS3 + a bit of jQuery
-To see an example, [click here](http://devmath.github.io/mustang-js)
+Simple slide plugin with CSS3 + a bit of pure JS(yes, without jQuery!)
 
 ## How to use
 
-Create your HTML tags, like:
+Add `mustang.min.js` to your file then, call the plugin(these also are the defaults)
 
 ```html
-	<section id="container">
-		<article class="item"></article>
-	</section>
+<script>
+	Mustang('.parent', {
+		item: '.item',
+		time: 2500,
+		height: 300, // parent height, children will have 100%
+		transition: '1s ease 0.1s', // css3 transition for slide items
+		next: false, // next button, optional
+		prev: false // prev button, optional
+	})
+</script>
 ```
 
-Set those properties to the container for do the plugin works.
+You don't need to set `next` and `prev`, but if you want have buttons you must active both.
+
+Mustang sets CSS for parent/children automatically, the CSS attributes are:
 
 ```css
+.parente {
+	position: relative;
 	display: flex;
 	flex-flow: nowrap row;
 	overflow: hidden;
-```
+	box-sizing: border-box;
+	height: 300px;
+}
 
-If you want that the items fit all the user view, set
-
-```css
-	width: 100%;
-	height: 100vh;
-```
-
-Set those properties for the items
-
-```css
+.child {
 	flex: 0 0 100%;
 	height: 100%;
-	transform: translateX(0);
-	transition: transform .7s ease-in .2s;
+	box-sizing: border-box;
+	transition: all 1s ease 0.1s;
+	transform: translateX(-100%); // when sliding
+}
 ```
 
-you can use the transition property to play with the transition speed and whatever you want.
+## Hey dude, I'm having some problems...
 
-If you want, add next and prev buttons too:
+Just open an [issue](https://github.com/mhernandes/mustang-js/issues) and let's solve it!
 
-```html
-	<a href="javascript:void(0);" id="prev"><</a>
-	<a href="javascript:void(0);" id="next">></a>
-```
+## See also
 
-Add jQuery and **mustang.js** file
+1. [Complete Sublime SCSS](https://github.com/mhernandes/sublime-scss-snippets)
+1. [Dragon - Jekyll Theme](https://github.com/mhernandes/dragon-theme)
+1. [Shield - Helpful SCSS library](https://github.com/mhernandes/shield-scss)
 
-```html
-	<body>
-		...
-		<!-- include jQuery -->
-		<!-- include mustang.js -->
-		<script src="assets/js/mustang.js"></script>
-	</body>
-```
+## License
 
-Set the Mustang.js properties
-
-```javascript
-	// start plugin with the container
-	$("#container").mustang({
-		// slide item
-		item: '.item',
-		// time between each slide
-		time: 2500,
-        // want to active next and prev buttons?
-        // if you type false,
-        // you don't have to worry about buttons
-        buttonActive: true,
-        // next button
-        next: "#next",
-        // prev button
-        prev: "#prev"
-	});
-```
-
-and ready! Your slide is already working!
-
-You can copy the SCSS file to use too. To see an example, [click here](http://devmath.github.io/mustang-js) 
+[MIT License](LICENSE.md)
