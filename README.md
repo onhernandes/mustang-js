@@ -1,4 +1,5 @@
-# Mustang.js - Simple slide plugin - [DEMO](https://mhernandes.github.io/mustang-js)
+# Mustang.js - Simple slide plugin - 
+[DEMO](https://onhernandes.github.io/mustang-js)
 
 Simple slide plugin with CSS3 + a bit of pure JS(yes, without jQuery! and 2.4kb minified!)
 
@@ -24,7 +25,7 @@ You don't need to set `next` and `prev`, but if you want have buttons you must a
 Mustang sets CSS for parent/children automatically, the CSS attributes are:
 
 ```css
-.parente {
+.parent {
 	position: relative;
 	display: flex;
 	flex-flow: nowrap row;
@@ -44,13 +45,16 @@ Mustang sets CSS for parent/children automatically, the CSS attributes are:
 
 ## Hey dude, I'm having some problems...
 
-Just open an [issue](https://github.com/mhernandes/mustang-js/issues) and let's solve it!
+Just open an 
+[issue](https://github.com/onhernandes/mustang-js/issues) and let's 
+solve it!
 
 ## See also
 
-1. [Complete Sublime SCSS](https://github.com/mhernandes/sublime-scss-snippets)
-1. [Dragon - Jekyll Theme](https://github.com/mhernandes/dragon-theme)
-1. [Shield - Helpful SCSS library](https://github.com/mhernandes/shield-scss)
+1. [Complete Sublime 
+SCSS](https://github.com/onhernandes/sublime-scss-snippets)
+1. [Dragon - Jekyll 
+Theme](https://github.com/onhernandes/dragon-theme)
 
 ## License
 
